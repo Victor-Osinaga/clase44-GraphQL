@@ -1,0 +1,75 @@
+MUTATIONS:
+_____GET ALL PRODUCTS______
+query {
+  getProducts{
+    id
+    name
+    description
+    photo
+    price
+    code
+    stock
+    timestamp
+  }
+}
+_____GET PRODUCT BY ID______
+query {
+  getProductById(id: "1"){
+    id
+    name
+    description
+    photo
+    price
+    code
+    stock
+    timestamp
+  }
+}
+_____DELETE PRODUCT BY ID______
+mutation {
+  deleteProductById(id: "23"){
+    id
+    name
+    description
+    photo
+    price
+    code
+    stock
+    timestamp
+  }
+}
+_____UPDATE PRODUCT BY ID______ name,description,photo,price,stock SON OPCIONALES TODOS
+mutation{
+  updateProductById(id: "1", data: {
+    name: "new name",
+    description: "new description",
+    photo: "new.photo.com.ar
+    price: 12,
+    stock: 999
+  }){
+    id
+    name 
+    description
+    photo
+    price
+    code
+    stock
+    timestamp
+  }
+}
+_____CREATE PRODUCT______ name, description, photo, price, stock SON CAMPOS OBLIGATORIOS
+mutation {
+  createProduct(data: {
+    name: "nuevoprod2035",
+    description: "nuevadesc2029",
+    photo: "nueva.foto.com.arrr",
+    price: 55,
+    stock: 99
+  }){
+    name
+    description
+    photo
+    price
+    stock
+  }
+}

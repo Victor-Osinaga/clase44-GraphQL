@@ -1,0 +1,1 @@
+setTimeout(()=> window.location.assign('/api/v1/auth/login'), 4000)

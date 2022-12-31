@@ -1,0 +1,45 @@
+<%- include('templates/headUser') %>
+<div class="container mt-3 ">
+    <div class=" d-flex justify-content-around jumbotron"> 
+        <h1 class="text-success"> Bienvenido <%=name%> !!</h1> 
+        
+        <form action="/api/v1/auth/logout" method="get" id="submit-name">
+            <button type="submit" id="logout-button"class="btn btn-warning">Desloguearse</button>
+        </form>
+    </div>
+    <h1 class="section_title">Productos</h1>
+    <div id="products_container" class="container products_container">
+        <p id="products_loader">CARGANDO...</p>
+    </div>
+</div>
+<script>
+    let products_container = document.getElementById('products_container')
+    let products_loader = document.getElementById('products_loader')
+    fetch('/api/v1/products')
+    .then((res)=>{
+        return !res.ok?Promise.reject(res.json()):res.json()
+    }).then((json)=>{
+        console.log(json.data);
+        products_loader.style.display = "none"
+        for (let i = 0; i < json.data.length; i++) {
+            products_container.innerHTML += `
+                <div class="products_item">
+                    <h3>${json.data[i].name}</h3>
+                    <div class="img_container">
+                        <img src="${json.data[i].photo}" > 
+                    </div>
+                    <h4>${json.data[i].price}</h4>
+                    <h4>${json.data[i].description}</h4>
+                    <h4>${json.data[i].code}</h4>
+                </div>
+            `
+        }
+    }).catch((e)=>{
+        products_container.innerHTML += `
+            <div class="products_item">
+                <h4>${e.data.error}</h4>
+            </div>
+        `
+    })
+</script>
+<%- include('templates/foot') %>

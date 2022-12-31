@@ -1,0 +1,17 @@
+<%- include('templates/head') %>
+    <h1 class="section_title">Register</h1>
+    <div class="container register_container">
+        <form action="/api/v1/auth/register" method="post" id="submit-name">
+            <div class="form-group">
+                <label for="name"> <em><b>Ingrese su email</b></em> </label>
+                <input id="name" class="form-control" type="text" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password"> <em><b>Ingrese su contraseña</b></em> </label>
+                <input id="password" class="form-control" type="password" name="password" required>
+            </div>
+            <button class="btn btn-warning" type="submit" value="Submit">Registrarse</button>
+            <button class="btn btn-warning" type="submit" value="Submit"><a href="/api/v1/auth/login">Ir a Login</a></button>
+        </form>
+    </div>
+<%- include('templates/foot') %>

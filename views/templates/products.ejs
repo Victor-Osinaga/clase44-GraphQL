@@ -1,0 +1,13 @@
+<%- include('templates/head') %>
+    <h1 class="section_title">Productos</h1>
+    <div class="container products_container">
+        <% for(i=0; i<allProductos.length; i++) { %>
+            <div class="products_item">
+                <h3> <%=allProductos[i].name %> </h3>
+                <h4> $<%=allProductos[i].price %> </h4>
+                <h4> <%=allProductos[i].code %> </h4>
+                <img src="<%= allProductos[i].photo %>" > 
+            </div>
+        <% } %>
+    </div>
+<%- include('templates/foot') %>

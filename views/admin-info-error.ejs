@@ -1,0 +1,38 @@
+<%- include('templates/headAdmin') %>
+    <h1><%= Información del Servidor %></h1>
+    <p> <b><%= argDeEntrada %></b></p>
+    <p> <b><%= sistema %></b></p>
+    <p> <b><%= nodeVersion %></b></p>
+    <p> <b><%= memoriaReservada %></b></p>
+    <p> <b><%= pathEjecucion %></b></p>
+    <p>Id del proceso: <b><%= procesoId %></b></p>'/api/v1/admin/generate-info'
+    <p>Carpeta del proyecto: <b><%= carpetaDelProyecto %></b></p>
+    <div id="infoDiv">
+
+    </div>
+    <script>
+        function ejec(url) {
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(obj)
+            }).then((res)=>{
+                return res.json()
+            }).then((json)=>{
+                let infoDiv = document.getElementById("infoDiv")
+                infoDiv.innerHTML=`
+                    <p>info: ${json.info}</p>
+                    <p>Argumentos de entrada: ${json.argDeEntrada}</p>
+                    <p>Sistema operativo: ${json.sistema}</p>
+                    <p>Version de Node.js: ${json.nodeVersion}</p>
+                    <p>Memoria reservada: ${json.memoriaReservada}</p>
+                    <p>Path de ejecucion: ${json.pathEjecucion}</p>
+                    <p>Id del proceso: ${json.procesoId}</p>
+                    <p>Carpeta del proyecto: ${json.carpetaDelProyecto}</p>
+                `
+            })
+        }
+    </script>
+<%- include('templates/foot') %>

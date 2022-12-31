@@ -1,0 +1,6 @@
+mongodb.json
+node_modules
+package-lock.json
+apuntes.MD
+.env
+pruebas.js
